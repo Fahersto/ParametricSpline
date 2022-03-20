@@ -1,6 +1,6 @@
 #pragma once
 
-class Polynom
+class Polynomial
 {
 	double cubic_;
 	double squared_;
@@ -8,7 +8,7 @@ class Polynom
 	double constant_;
 
 public:
-	Polynom(double cubic, double squared, double linear, double constant)
+	Polynomial(double cubic, double squared, double linear, double constant)
 		: cubic_(cubic), squared_(squared), linear_(linear), constant_(constant)
 	{
 	}

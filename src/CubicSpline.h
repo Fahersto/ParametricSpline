@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Polynom.h"
+#include "Polynomial.h"
 
 #include <vector>
 
@@ -10,7 +10,7 @@
 class CubicSpline
 {
 
-    std::vector<Polynom> polynoms_;
+    std::vector<Polynomial> polynomials_;
 
 public:
     ~CubicSpline()
@@ -19,11 +19,11 @@ public:
     }
 
     /**
-    * Returns the number of segments/polynoms
+    * Returns the number of segments/polynomials
     */
     int GetSegmentCount()
     {
-        return polynoms_.size();
+        return polynomials_.size();
     }
 
     /**
@@ -34,19 +34,19 @@ public:
         //Rounding downm t gives the number of the segment. This works because t is chosen to be: segment1[0,1], segment2[1,2]..
         int segmentNumber = (int)t;
 
-        if (segmentNumber >= polynoms_.size())
+        if (segmentNumber >= polynomials_.size())
         {
             printf("Error: t value is exceeds segments\n");
             return 0;
         }
         //map each segment form [0, 1]
         double normalizedT = t - segmentNumber;
-        Polynom polynom = polynoms_[segmentNumber];
+        Polynomial Polynomial = polynomials_[segmentNumber];
 
-        return  polynom.GetCubic() * normalizedT * normalizedT * normalizedT +
-            polynom.GetSquared() * normalizedT * normalizedT +
-            polynom.GetLinear() * normalizedT +
-            polynom.GetConstant();
+        return  Polynomial.GetCubic() * normalizedT * normalizedT * normalizedT +
+            Polynomial.GetSquared() * normalizedT * normalizedT +
+            Polynomial.GetLinear() * normalizedT +
+            Polynomial.GetConstant();
     }
 
 
@@ -137,7 +137,7 @@ public:
 
         for (int i = 0; i < segmentCount; i++)
         {
-            polynoms_.push_back(Polynom(d[i], c[i], b[i], a[i]));
+            polynomials_.push_back(Polynomial(d[i], c[i], b[i], a[i]));
         }
 
         delete[] a;

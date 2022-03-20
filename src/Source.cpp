@@ -4,7 +4,6 @@
 
 int main()
 {
-
 	ParametricSpline parametricSpline = ParametricSpline();
 
 	const int VALUE_COUNT = 3;
@@ -17,12 +16,11 @@ int main()
 	const int STEPS = 10;
 	for (int i = 0; i < parametricSpline.GetSegmentCount(); i++)
 	{
-		
 		for (int j = 0; j < STEPS; j++)
 		{
 			double t = i + (double)j / (STEPS);
 			double* position = parametricSpline.eval(t);
-			printf("new Vector3(%ff, %ff, %ff),\n", position[0], position[1], position[2]);
+			printf("new Vector3(%f, %f, %f),\n", position[0], position[1], position[2]);
 		}
 	}
 
